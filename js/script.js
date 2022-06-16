@@ -1,6 +1,13 @@
 const input = document.querySelector('.input');
 
-input.addEventListener('input', function checkBigLetter() {
+input.addEventListener('input', () => {
+    checkBigLetter();
+    checkNumber();
+    checkPunktuationMark();
+    checkInputLength();
+});
+
+function checkBigLetter() {
     const bigLetterCheckString = document.querySelector('.one-big-letter')
     const bigLetterRegEx = /[A-Z]/
     if (input.value.match(bigLetterRegEx)) {
@@ -8,29 +15,17 @@ input.addEventListener('input', function checkBigLetter() {
     } else {
         bigLetterCheckString.classList.remove('green-text')
     }
-});
-
-input.addEventListener('input', function checkNumber () {
+};
+function checkNumber() {
     const numberCheckString = document.querySelector('.one-number');
     const numberRegEx = /\d+/;
     if (input.value.match(numberRegEx)) {
-        numberCheckString.classList.add('green-text')
+        numberCheckString.classList.add('green-text');
     } else {
-        numberCheckString.classList.remove('green-text')
-    }
-});
-
-input.addEventListener('input', function checkBigLetter() {
-    const bigLetterCheckString = document.querySelector('.one-big-letter')
-    const bigLetterRegEx = /[A-Z]/
-    if (input.value.match(bigLetterRegEx)) {
-        bigLetterCheckString.classList.add('green-text')
-    } else {
-        bigLetterCheckString.classList.remove('green-text')
-    }
-});
-
-input.addEventListener('input', function checkPunktuationMark () {
+        numberCheckString.classList.remove('green-text');
+    };
+};
+function checkPunktuationMark() {
     const punktuationMarkString = document.querySelector('.one-punktuation-mark');
     const punktuationMarkRegEx = /\W/;
     if (input.value.match(punktuationMarkRegEx)) {
@@ -38,14 +33,14 @@ input.addEventListener('input', function checkPunktuationMark () {
     } else {
         punktuationMarkString.classList.remove('green-text')
     }
-});
-
-input.addEventListener('input', function checkInputLength () {
+};
+function checkInputLength() {
     const lengthString = document.querySelector('.length-string');
-    if (input.value.length >= 8) {
-        lengthString.classList.add('green-text')
-    } else {
-        lengthString.classList.remove('green-text')
-    }
-});
-
+    const lengthStringRegEx = /^.{8,100}$/; {
+        if (input.value.match(lengthStringRegEx)) {
+            lengthString.classList.add('green-text')
+        } else {
+            lengthString.classList.remove('green-text')
+        }
+    };
+};
